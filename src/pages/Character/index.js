@@ -1,34 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Container from '../../components/Container';
-import { api, params } from '../../services/api';
-import { parseCharacter, parseSeries } from '../../utils';
 
 import Serie from './Serie';
 import SkeletonSerie from './SkeletonSerie';
+
 import { Header, List } from './styles';
+import { loadCharacterRequest } from '../../store/modules/character/actions';
 
 export default function Character({ match }) {
-  const characterId = match.params.id;
+  const characterId = parseInt(match.params.id, 10);
 
-  const [character, setCharacter] = useState({});
-  const [series, setSeries] = useState(null);
+  const character =
+    useSelector(state =>
+      state.character.data.find(m => m.id === characterId)
+    ) || {};
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function load() {
-      const [payloadCharacter, payloadSeries] = await Promise.all([
-        await api.get(`/characters/${characterId}`, { params }),
-        await api.get(`/characters/${characterId}/series`, { params }),
-      ]);
-
-      setCharacter(parseCharacter(payloadCharacter.data.data.results[0]));
-      setSeries(payloadSeries.data.data.results.map(parseSeries));
+    if (!character.id) {
+      dispatch(loadCharacterRequest(characterId));
     }
-
-    load();
-  }, [characterId]);
+  });
 
   return (
     <Container>
@@ -44,8 +41,10 @@ export default function Character({ match }) {
       </Header>
 
       <List>
-        {series ? (
-          series.map(serie => <Serie key={String(serie.id)} data={serie} />)
+        {character.series ? (
+          character.series.map(serie => (
+            <Serie key={String(serie.id)} data={serie} />
+          ))
         ) : (
           <SkeletonSerie />
         )}
