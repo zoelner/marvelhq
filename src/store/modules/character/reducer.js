@@ -25,6 +25,17 @@ export default function movie(state = INITIAL_STATE, action) {
         draft.loading = false;
       });
 
+    case Types.EDIT_LOCAL:
+      return produce(state, draft => {
+        const { payload } = action;
+
+        draft.data.forEach((character, i, array) => {
+          if (String(character.id) === payload.id) {
+            array[i] = payload;
+          }
+        });
+      });
+
     default:
       return state;
   }

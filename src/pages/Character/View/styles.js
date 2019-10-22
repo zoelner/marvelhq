@@ -15,9 +15,11 @@ export const Header = styled.header`
   flex-direction: column;
   align-items: center;
   a {
+    display: block;
     color: #2d3436;
     font-size: 16px;
     text-decoration: none;
+    margin-bottom: 10px;
 
     &:hover {
       color: #f0141e;

@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Container from '../../components/Container';
+import Container from '../../../components/Container';
+import Button from '../../../components/Button';
 
 import Serie from './Serie';
 import SkeletonSerie from './SkeletonSerie';
 
 import { Header, List } from './styles';
-import { loadCharacterRequest } from '../../store/modules/character/actions';
+import { loadCharacterRequest } from '../../../store/modules/character/actions';
 
-export default function Character({ match }) {
-  const characterId = parseInt(match.params.id, 10);
+export default function CharacterView({ match }) {
+  const characterId = match.params.id;
 
   const character =
     useSelector(state =>
-      state.character.data.find(m => m.id === characterId)
+      state.character.data.find(m => String(m.id) === characterId)
     ) || {};
 
   const dispatch = useDispatch();
@@ -25,12 +26,15 @@ export default function Character({ match }) {
     if (!character.id) {
       dispatch(loadCharacterRequest(characterId));
     }
-  });
+  }, [character.id, characterId, dispatch]);
 
   return (
     <Container>
       <Header>
         <Link to="/">Voltar para lista de personagens</Link>
+        <Link to={`/character/${characterId}/edit`} type="button">
+          <Button>Editar personagem</Button>
+        </Link>
         {character.thumbnail ? (
           <img src={character.thumbnail} alt={character.name} />
         ) : (

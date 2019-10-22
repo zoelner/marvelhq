@@ -2,17 +2,15 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Main from './pages/Main';
-import Character from './pages/Character';
+import CharacterView from './pages/Character/View';
+import CharacterEdit from './pages/Character/Edit';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Main} />
-      <Route path="/character/:id" component={Character} />
-      <Route
-        path="/character/:id/edit"
-        render={() => <h1>Edit Character</h1>}
-      />
+      <Route path="/character/:id" exact component={CharacterView} />
+      <Route path="/character/:id/edit" exact component={CharacterEdit} />
     </Switch>
   );
 }

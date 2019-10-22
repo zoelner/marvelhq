@@ -20,3 +20,10 @@ export function loadCharacterFinally(character) {
     character,
   };
 }
+
+export function editCharacterLocal(payload) {
+  return {
+    type: Types.EDIT_LOCAL,
+    payload,
+  };
+}
