@@ -20,7 +20,7 @@ export default function CharacterEdit({ match }) {
 
   const character =
     useSelector(state =>
-      state.character.data.find(m => String(m.id) === characterId)
+      state.character.data.find(m => m.id === characterId)
     ) || {};
 
   const dispatch = useDispatch();

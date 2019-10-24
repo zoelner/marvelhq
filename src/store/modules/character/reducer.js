@@ -30,7 +30,7 @@ export default function movie(state = INITIAL_STATE, action) {
         const { payload } = action;
 
         draft.data.forEach((character, i, array) => {
-          if (String(character.id) === payload.id) {
+          if (character.id === payload.id) {
             array[i] = payload;
           }
         });

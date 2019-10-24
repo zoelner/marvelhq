@@ -4,7 +4,7 @@ function imagePath({ path, extension }) {
 
 export function parseCharacter(character) {
   return {
-    id: character.id,
+    id: String(character.id),
     name: character.name,
     thumbnail: imagePath(character.thumbnail),
     description: character.description || 'Sem descrição',

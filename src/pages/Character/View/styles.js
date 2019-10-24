@@ -31,7 +31,7 @@ export const Header = styled.header`
     height: 150px;
     border-radius: 50%;
     margin-top: 20px;
-    object-fit: contain;
+    object-fit: scale-down;
   }
   h1 {
     font-size: 24px;
@@ -64,7 +64,7 @@ export const List = styled.ul`
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      object-fit: cover;
+      object-fit: scale-down;
       border: 2px solid #eee;
     }
     div {
