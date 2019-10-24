@@ -15,7 +15,7 @@ const Container = styled.div`
     img {
       margin-right: 10px;
       width: 150px;
-      object-fit: cover;
+      object-fit: scale-down;
     }
   }
 
