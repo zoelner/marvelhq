@@ -3,11 +3,11 @@ import { FaSearch, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-import Container from '../../components/Container';
-import Marvel from '../../assets/images/marvel.svg';
-import { api, params } from '../../services/api';
-import Loading from '../../components/Loading';
-import { parseCharacter } from '../../utils';
+import Container from '~/components/Container';
+import Marvel from '~/assets/images/marvel.svg';
+import { api, params } from '~/services/api';
+import Loading from '~/components/Loading';
+import { parseCharacter } from '~/utils';
 
 import { Form, SubmitButton, List, Footer } from './styles';
 

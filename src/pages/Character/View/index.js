@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Container from '../../../components/Container';
-import Button from '../../../components/Button';
+import Container from '~/components/Container';
+import Button from '~/components/Button';
+import { loadCharacterRequest } from '~/store/modules/character/actions';
 
 import Serie from './Serie';
 import SkeletonSerie from './SkeletonSerie';
 
 import { Header, List } from './styles';
-import { loadCharacterRequest } from '../../../store/modules/character/actions';
 
 export default function CharacterView({ match }) {
   const characterId = match.params.id;

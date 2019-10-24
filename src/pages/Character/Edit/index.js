@@ -4,16 +4,16 @@ import { Input, Scope } from '@rocketseat/unform';
 import { MdArrowBack } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-import Button from '../../../components/Button';
-import Container from '../../../components/Container';
-import history from '../../../services/history';
+import Button from '~/components/Button';
+import Container from '~/components/Container';
+import history from '~/services/history';
 
 import { Form, Character, Series } from './styles';
 
 import {
   loadCharacterRequest,
   editCharacterLocal,
-} from '../../../store/modules/character/actions';
+} from '~/store/modules/character/actions';
 
 export default function CharacterEdit({ match }) {
   const characterId = match.params.id;
